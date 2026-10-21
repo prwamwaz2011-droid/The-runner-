@@ -1,0 +1,251 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
+
+body {
+font-family: Arial, sans-serif;
+background: #101b16;
+color: white;
+min-height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 15px;
+}
+
+.game-container {
+width: 100%;
+max-width: 650px;
+text-align: center;
+}
+
+.top-bar {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+align-items: center;
+gap: 10px;
+padding: 15px;
+background: #1b3025;
+border-radius: 12px 12px 0 0;
+}
+
+.top-bar h1 {
+font-size: 20px;
+color: #f5cc62;
+}
+
+.stats {
+display: flex;
+gap: 15px;
+font-weight: bold;
+}
+
+#game {
+position: relative;
+width: 100%;
+height: 520px;
+overflow: hidden;
+background: #537c39;
+border: 3px solid #314a2c;
+isolation: isolate;
+}
+
+.sky {
+position: absolute;
+inset: 0 0 65% 0;
+background: linear-gradient(#76c9ed, #d6ed9d);
+z-index: -3;
+}
+
+.jungle {
+position: absolute;
+inset: 0;
+z-index: -2;
+background:
+radial-gradient(ellipse at 8% 25%, #173e24 0 9%, transparent 10%),
+radial-gradient(ellipse at 90% 35%, #24522a 0 13%, transparent 14%),
+radial-gradient(ellipse at 20% 70%, #326a31 0 15%, transparent 16%),
+radial-gradient(ellipse at 80% 75%, #244d27 0 17%, transparent 18%);
+}
+
+.road {
+position: absolute;
+bottom: 0;
+left: 15%;
+width: 70%;
+height: 100%;
+background: linear-gradient(
+90deg,
+#675440,
+#a28a65 15%,
+#8c7553 50%,
+#a28a65 85%,
+#675440
+);
+clip-path: polygon(43% 0, 57% 0, 100% 100%, 0 100%);
+z-index: -1;
+}
+
+.lane-line {
+position: absolute;
+bottom: -10%;
+height: 120%;
+width: 3px;
+background: repeating-linear-gradient(
+to bottom,
+#f2e5b7 0 25px,
+transparent 25px 50px
+);
+animation: roadMove 0.5s linear infinite;
+}
+
+.line-one {
+left: 38%;
+}
+
+.line-two {
+left: 62%;
+}
+
+@keyframes roadMove {
+from {
+background-position-y: 0;
+}
+
+to {
+    background-position-y: 50px;
+}
+
+}
+
+.player {
+position: absolute;
+bottom: 65px;
+left: 50%;
+transform: translateX(-50%);
+font-size: 55px;
+z-index: 5;
+transition: left 0.12s ease;
+filter: drop-shadow(0 5px 3px #333);
+user-select: none;
+}
+
+.player.jumping {
+bottom: 145px;
+}
+
+.object {
+position: absolute;
+z-index: 4;
+font-size: 32px;
+transform: translateX(-50%);
+user-select: none;
+pointer-events: none;
+}
+
+.object.coin {
+font-size: 27px;
+filter: drop-shadow(0 0 5px gold);
+}
+
+.overlay {
+position: absolute;
+inset: 0;
+z-index: 10;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 16px;
+padding: 20px;
+text-align: center;
+background: rgba(10, 25, 14, 0.86);
+}
+
+.overlay h2 {
+color: #ffd65c;
+font-size: clamp(25px, 6vw, 38px);
+}
+
+.overlay p {
+font-size: 16px;
+}
+
+button {
+border: none;
+border-radius: 10px;
+padding: 14px 22px;
+font-size: 17px;
+font-weight: bold;
+cursor: pointer;
+background: #ffcc4d;
+color: #24321e;
+transition: background 0.2s, transform 0.2s;
+touch-action: manipulation;
+}
+
+button:hover {
+background: #ffe28a;
+}
+
+button:active {
+transform: scale(0.95);
+}
+
+.hidden {
+display: none;
+}
+
+.controls {
+display: flex;
+justify-content: center;
+gap: 20px;
+padding: 15px;
+}
+
+.controls button {
+width: 75px;
+height: 55px;
+font-size: 24px;
+padding: 5px;
+}
+
+.instructions {
+color: #c5d6c9;
+font-size: 14px;
+line-height: 1.6;
+padding: 5px 10px 15px;
+}
+
+@media (max-width: 480px) {
+.top-bar {
+justify-content: center;
+}
+
+.top-bar h1 {
+    width: 100%;
+}
+
+#game {
+    height: 450px;
+}
+
+.stats {
+    font-size: 14px;
+}
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+.lane-line {
+animation-duration: 2s;
+}
+
+.player {
+    transition: none;
+}
+
+}

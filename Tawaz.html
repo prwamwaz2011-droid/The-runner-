@@ -1,0 +1,62 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temple Runner</title>
+    <link rel="stylesheet" href="Tawaz.css">
+</head>
+<body><div class="game-container">
+
+    <div class="top-bar">
+        <h1>🏃 TEMPLE RUNNER</h1>
+        <div class="stats">
+            <span>Score: <span id="score">0</span></span>
+            <span>🪙 Coins: <span id="coins">0</span></span>
+        </div>
+    </div>
+
+    <div id="game">
+        <div class="sky"></div>
+        <div class="jungle"></div>
+
+        <div class="road">
+            <div class="lane-line line-one"></div>
+            <div class="lane-line line-two"></div>
+        </div>
+
+        <div id="player" class="player">🏃</div>
+
+        <div id="objects"></div>
+
+        <div id="start-screen" class="overlay">
+            <h2>TEMPLE RUNNER</h2>
+            <p>Run through the jungle!</p>
+            <p>Avoid obstacles and collect coins.</p>
+            <button id="start-btn">START GAME</button>
+        </div>
+
+        <div id="game-over" class="overlay hidden">
+            <h2>GAME OVER!</h2>
+            <p>Your score: <span id="final-score">0</span></p>
+            <p>Coins collected: <span id="final-coins">0</span></p>
+            <button id="restart-btn">PLAY AGAIN</button>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button id="left-btn" aria-label="Move left">⬅️</button>
+        <button id="jump-btn" aria-label="Jump">⬆️</button>
+        <button id="right-btn" aria-label="Move right">➡️</button>
+    </div>
+
+    <p class="instructions">
+        Use ← → to change lanes and ↑ or SPACE to jump.
+        On mobile, use the buttons below the game.
+    </p>
+
+</div>
+
+<script src="Tawaz.js"></script>
+
+</body>
+</html>
